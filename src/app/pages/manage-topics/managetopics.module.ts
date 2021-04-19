@@ -13,6 +13,7 @@ import { TopicFormComponent } from './topic-form/mtopic-form.component';
     EditManageTopicComponent,
     CreateManageTopicComponent,
     TopicFormComponent,
+    
   ],
 })
 export class ManageTopicsModule {}

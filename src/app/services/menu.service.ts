@@ -44,29 +44,17 @@ export class MenuService implements IMenuService {
 
       //requiredPermission: AppPermission.canAccessTopicsModule,
     },
-        {
-        title: 'Auth',
-        icon: 'lock-outline',
-        requiredPermission: AppPermission.canAccessMapsModule,
-        children: [
-          {
-            title: 'Login',
-            link: '/auth/login',
-          },
-          {
-            title: 'Register',
-            link: '/auth/register',
-          },
-          {
-            title: 'Request Password',
-            link: '/auth/request-password',
-          },
-          {
-            title: 'Reset Password',
-            link: '/auth/reset-password',
-          },
-        ],
+    {
+      title: 'Contributions',
+      icon: {
+        icon: 'list-alt',
+        pack: FONT_AWESOME_PACK,
       },
+      link: '/pages/contributions',
+
+      // requiredPermission: AppPermission.canAccessTopicsModule,
+    },
+    
   ];
 
   constructor(private readonly _authService: IAuthService) {}

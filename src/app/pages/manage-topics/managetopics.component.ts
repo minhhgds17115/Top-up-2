@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
-import { ManageTopicModel } from 'app/models';
-import { ManageTopicService } from 'app/services';
+import { ManageTopicModel } from 'app/models/managetopic.model';
+import { ManageTopicService } from 'app/services/managetopic.service';
 import { AppPermission } from '../../enums';
 
 @Component({

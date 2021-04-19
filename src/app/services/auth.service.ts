@@ -137,6 +137,7 @@ export class AuthService implements IAuthService, OnDestroy {
     const excludes = [
       // Exclude permissions.
       AppPermission.canCreateFaculty,
+      // AppPermission.canAccessDashboardModule
     ];
 
     return [...Object.keys(AppPermission)].reduce(

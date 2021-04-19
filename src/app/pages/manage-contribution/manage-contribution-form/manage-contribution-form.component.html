@@ -1,0 +1,52 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-control-group">
+      <label class="label" for="input-name">Name:</label>
+      <input id="input-name" nbInput fullWidth formControlName="name" required name="name">
+      <ng-container *ngIf="form.get('name') as control">
+        <ng-container *ngIf="control.invalid && control.touched">
+          <p class="caption status-danger" *ngIf="control.getError('required')">
+            Name is required!
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="form-control-group">
+      <label class="label" for="input-title">Title:</label>
+      <input id="input-title" nbInput fullWidth formControlName="title" required name="title">
+      <ng-container *ngIf="form.get('title') as control">
+        <ng-container *ngIf="control.invalid && control.touched">
+          <p class="caption status-danger" *ngIf="control.getError('required')">
+            Title is required!
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="form-control-group">
+      <label class="label" for="input-deadline">Deadline:</label>
+      <input id="input-deadline" nbInput fullWidth formControlName="deadline" [nbDatepicker]="dateTimePicker">
+      <nb-date-timepicker twelveHoursFormat #dateTimePicker [min]="minDeadlineFrom"></nb-date-timepicker>
+      <ng-container *ngIf="form.get('deadline') as control">
+        <ng-container *ngIf="control.invalid && control.touched">
+          <p class="caption status-danger" *ngIf="control.getError('required')">
+            Deadline is required!
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+  
+    <div class="form-control-group">
+      <label class="label" for="input-contribution">Contribution:</label>
+      <input id="Contribution" nbInput fullWidth formControlName="Contribution" required name="Contribution">
+      <ng-container *ngIf="form.get('Contribution') as control">
+        <ng-container *ngIf="control.invalid && control.touched">
+          <p class="caption status-danger" *ngIf="control.getError('required')">
+            Contribution is required
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+  
+    <button class="submit-btn" type="submit" nbButton status="primary" [disabled]="disabled" [class.btn-pulse]="true">
+      Save
+    </button>
+  </form>

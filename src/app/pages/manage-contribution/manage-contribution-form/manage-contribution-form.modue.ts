@@ -1,27 +1,26 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TopicModel } from 'app/models/topic.model';
+import { ManageContributionModel } from 'app/models/contribution.model';
 
 @Component({
-  selector: 'ngx-topic-form',
-  templateUrl: './topic-form.component.html',
-  styleUrls: ['topic-form.component.scss'],
+  selector: 'manage-contribution-form',
+  templateUrl: './manage-contribution-form.component.html',
+  styleUrls: ['manage-contribution-form.component.scss'],
 })
-export class TopicFormComponent {
-  @Input() set data(value: TopicModel) {
+export class ManageContributionFormComponent {
+  @Input() set data(value: ManageContributionModel) {
     if (value) {
       this.form.patchValue({
         name: value.name,
-        title: value.title,
-        deadline: new Date(value.deadline),
         
+        topic: value.topic,
       });
     }
   }
 
   @Input() disabled = false;
 
-  @Output() formSubmitted = new EventEmitter<TopicModel>();
+  @Output() formSubmitted = new EventEmitter<ManageContributionModel>();
 
   readonly minDeadlineFrom = new Date();
 
@@ -29,7 +28,6 @@ export class TopicFormComponent {
     name: new FormControl(null, [Validators.required]),
     title: new FormControl(null, [Validators.required]),
     deadline: new FormControl(null, [Validators.required]),
-    
   });
 
   onSubmit(): void {

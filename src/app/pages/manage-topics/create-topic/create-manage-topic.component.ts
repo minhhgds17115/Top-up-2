@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManageTopicModel } from '../../../models/managetopic.model';
-import { ManageTopicService } from '../../../services';
+import { ManageTopicService } from '../../../services/managetopic.service';
 
 @Component({
   selector: 'ngx-create-mtopic',
@@ -29,6 +29,6 @@ export class CreateManageTopicComponent {
   }
 
   private _toManageTopicsPage(): void {
-    this._router.navigateByUrl('/pages/managetopics');
+    this._router.navigateByUrl('/pages/manage-topics');
   }
 }

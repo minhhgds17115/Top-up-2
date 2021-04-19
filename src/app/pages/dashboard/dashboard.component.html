@@ -1,12 +1,43 @@
 <ng-container *ngxPermissionsOnly="permissions.canViewDashboard">
-<div class="row">
-  <nb-card>
-    <nb-card-body>Hello from Backoffice sandbox project.</nb-card-body>
-  </nb-card>
-</div>
-<nb-card [nbSpinner]="true" nbSpinnerStatus="basic">
-  <nb-card-body>
-    Some card content.
-  </nb-card-body>
-</nb-card>
-</ng-container>
+  <ngx-slick-carousel [config]="slideConfig">
+    <div ngxSlickItem *ngFor="let slide of slides">
+      <img class="carousel-image" src="{{ slide.img }}" alt="" width="100%">
+    </div>
+  </ngx-slick-carousel>
+
+  <p class="text-center">
+    Categories
+  </p>
+
+
+  
+  <h1 class="text-center">Group Members</h1>
+  
+  <div class="list-people">
+    <div class="container">
+      <img src="assets/images/Toan.jpg" alt="Avatar" class="image" >
+      <div class="overlay">
+        <div class="text">Nguyễn Thị Cảnh Toàn</div>
+      </div>
+    </div>
+    <div class="container">
+      <img src="assets/images/minh.jpg" alt="Avatar" class="image" >
+      <div class="overlay">
+        <div class="text">Hoàng Minh</div>
+      </div>
+    </div>
+    <div class="container">
+      <img src="assets/images/hieu.jpg" alt="Avatar" class="image">
+      <div class="overlay">
+        <div class="text">Phạm Thị Minh Hiếu</div>
+      </div>
+    </div>
+    <div class="container">
+      <img src="assets/images/phuong.jpg" alt="Avatar" class="image" >
+      <div class="overlay">
+        <div class="text">Trần Nguyên Cao Phương</div>
+      </div>
+    </div>
+  </div>
+  
+ 

@@ -2,18 +2,19 @@ import { DatePipe } from '@angular/common';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
-import { TopicModel } from 'app/models';
-import { TopicService } from 'app/services';
+import { ManageContributionModel } from 'app/models/contribution.model';
 import { AppPermission } from '../../enums';
+import { ManageContributionService } from './manage-contribution.service';
 
 @Component({
-  selector: 'ngx-topics',
-  templateUrl: './topics.component.html',
-  styleUrls: ['./topics.component.scss'],
-})
-export class TopicsComponent {
+    selector: 'manage-contribution',
+    templateUrl: './manage-contribution.component.html',
+    styleUrls:['./manage-contribution.component.scss'] ,
+  })
+export class ManageContributionComponent {
   disabled = false;
   @ViewChild('deleteDialogRef') public _deleteDialogRef: TemplateRef<any>;
+  @ViewChild('downloadDialogRef') public _downoadDialogRef: TemplateRef<any>;
   public readonly permissions = AppPermission;
 
   public readonly settings = {
@@ -32,14 +33,9 @@ export class TopicsComponent {
           title: '<i class="nb-trash custom-icon" title="Delete"></i>',
         },
         {
-          name: 'mark',
-          title: '<i class="fa fa-street-view" title="Mark" ></i>',
-        },
-        {
-          name: 'upload',
-          title: '<i class="fa fa-upload" aria-hidden="true"></i>'
-          
-        },
+          name: 'download',
+          title: '<i class="fa fa-download" aria-hidden="true"></i>',
+        }
       ],
     },
 
@@ -47,11 +43,12 @@ export class TopicsComponent {
       name: {
         title: 'Name',
       },
-      namestudent:{
-        title: 'NameStudent'
-      },
       title: {
         title: 'Title',
+      },
+      Contribution: { 
+        title:'Contribution',
+
       },
       deadline: {
         title: 'Deadline',
@@ -62,16 +59,20 @@ export class TopicsComponent {
           }
           return null;
         },
+       
       },
+      coordinator: {
+        title: 'Coordinator',
+      }
     },
   };
 
-  public source: TopicModel[] = [];
+  public source: ManageContributionModel[] = [];
 
   constructor(
     private readonly _router: Router,
     private readonly _dialogService: NbDialogService,
-    private readonly _topicService: TopicService,
+    private readonly _manageContribution: ManageContributionService,
     private readonly _datePipe: DatePipe,
   ) {}
 
@@ -80,9 +81,9 @@ export class TopicsComponent {
   }
 
   onCreate(): void {
-    this._router.navigate(['pages', 'topics', 'create']);
+    this._router.navigate(['pages', 'contributions', 'create']);
   }
- 
+
   onCustom(event: any): void {
     const { action, data } = event;
 
@@ -93,45 +94,50 @@ export class TopicsComponent {
       case 'delete':
         this._onDelete(data);
         break;
-      case 'mark':
-        this._onMark(data);
-          break;
+      case 'download':
+      this._onDownload(data);
 
       default:
         break;
     }
   }
+ 
 
-  private _onEdit(row: TopicModel): void {
-    this._router.navigate(['pages', 'topics', row.id]);
-  }
-  private _onMark(row: TopicModel): void {
-    this._router.navigate(['pages', 'topics', 'mark', row.id]);
+  private _onEdit(row: ManageContributionModel): void {
+    this._router.navigate(['pages', 'Contributions', row.id]);
   }
 
-  private _onDelete(row: TopicModel): void {
+  private _onDelete(row: ManageContributionModel): void {
     this._dialogService
       .open(this._deleteDialogRef, {
         context: row,
       })
       .onClose.subscribe(confirmed => {
         if (confirmed) {
-          this._topicService.delete(row.id);
+          this._manageContribution.delete(row.id);
           this.loadAllEntities();
         }
       });
     // this._deleteDialogRef.alert(`Delete triggered at row ${row.id}`);
   }
-  private _onUpload(row: TopicModel): void {
-    ;
+  private _onDownload(row: ManageContributionModel): void {
+    this._dialogService
+      .open(this._downoadDialogRef, {
+        context: row,
+      })
+      .onClose.subscribe(confirmed => {
+        if (confirmed) {
+          this._manageContribution.delete(row.id);
+          this.loadAllEntities();
+        }
+      });
   }
 
- 
 
   private loadAllEntities(): void {
     this.disabled = true;
     this.source = [];
-    this._topicService.fetchAllTopics().subscribe(rows => {
+    this._manageContribution.fetchAllContributions().subscribe(rows => {
       this.source = rows;
       this.disabled = false;
     });

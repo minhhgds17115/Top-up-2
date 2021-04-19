@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ManageTopicModel } from '../../../models';
-import { ManageTopicService } from '../../../services';
+import { ManageTopicModel } from '../../../models/managetopic.model';
+import { ManageTopicService } from '../../../services/managetopic.service';
 
 @Component({
   selector: 'ngx-edit-mtopic',
@@ -37,7 +37,7 @@ export class EditManageTopicComponent implements OnInit {
   }
 
   private _toTopicsPage(): void {
-    this._router.navigateByUrl('/pages/managetopics');
+    this._router.navigateByUrl('/pages/manage-topics');
   }
 
   private _loadEntity(id: string): void {

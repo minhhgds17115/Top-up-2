@@ -20,6 +20,7 @@ import {
 import { ThemeModule } from 'app/@theme/theme.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   exports: [
@@ -45,6 +46,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 
     Ng2SmartTableModule,
     NgxPermissionsModule,
+    SlickCarouselModule,
   ],
 })
 export class SharedModule {}

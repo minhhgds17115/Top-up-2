@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
       packClass: 'fa',
     });
   }
+  
 
   ngOnInit() {
     this.analytics.trackPageViews();
