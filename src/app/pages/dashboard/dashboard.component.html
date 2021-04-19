@@ -1,0 +1,12 @@
+<ng-container *ngxPermissionsOnly="permissions.canViewDashboard">
+<div class="row">
+  <nb-card>
+    <nb-card-body>Hello from Backoffice sandbox project.</nb-card-body>
+  </nb-card>
+</div>
+<nb-card [nbSpinner]="true" nbSpinnerStatus="basic">
+  <nb-card-body>
+    Some card content.
+  </nb-card-body>
+</nb-card>
+</ng-container>

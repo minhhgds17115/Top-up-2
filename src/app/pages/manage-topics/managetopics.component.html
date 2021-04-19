@@ -1,0 +1,25 @@
+<nb-card [nbSpinner]="disabled" nbSpinnerStatus="basic">
+  <nb-card-header>
+    List of Topics
+
+    <button class="create-btn" nbButton status="primary" [class.btn-pulse]="true" (click)="onCreate()">
+      Create
+    </button>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustom($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #deleteDialogRef let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>Delete Topic</nb-card-header>
+    <nb-card-body>Do you want to delete the topic {{ data.name }}</nb-card-body>
+    <nb-card-footer class="dialog-footer">
+      <button nbButton status="warning" (click)="ref.close()">No</button>
+      <button nbButton status="primary" (click)="ref.close(true)">Yes</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

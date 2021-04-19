@@ -1,0 +1,26 @@
+::ng-deep {
+  ng2-st-tbody-edit-delete {
+    display: none;
+    height: 0 !important;
+  }
+
+  ng2-st-tbody-custom {
+    display: flex;
+    text-align: center;
+
+    .custom-icon:hover {
+      color: red;
+    }
+  }
+}
+
+.dialog-footer {
+  margin: 0 auto;
+  button:not(:first-child) {
+    margin-left: 1rem;
+  }
+}
+
+.create-btn {
+  float: right;
+}

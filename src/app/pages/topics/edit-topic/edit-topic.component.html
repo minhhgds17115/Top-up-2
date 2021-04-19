@@ -1,0 +1,12 @@
+<button class="back-btn" nbButton status="primary" [class.btn-pulse]="true" [disabled]="disabled" (click)="onBack()">
+  Back
+</button>
+
+<nb-card [nbSpinner]="disabled" nbSpinnerStatus="basic">
+  <nb-card-header>
+    Edit Topic
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-topic-form [data]="model" (formSubmitted)="onSubmit($event)" [disabled]="disabled"></ngx-topic-form>
+  </nb-card-body>
+</nb-card>
